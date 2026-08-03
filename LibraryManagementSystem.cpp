@@ -182,18 +182,20 @@ void displayBooks(){
 }
 
 void searchBook(Book book){
+  bool found = false;
   for(int i = 0 ; i< books.size() ; i++ ){
     if (books[i].getISBN() == book.getISBN()){
+       found = true;
       books[i].displayBook() ;
-      break;
-    }
-      else
-      {
-        cout << "book not found" << endl ;
-      }
+       break;
+
       
-    
+     
+    }
   }
+  if(!found){
+    cout<<"book not found"<< endl ;
+   }
 }
 
 void borrowBook(string member,Book book){
@@ -217,5 +219,19 @@ void borrowBook(string member,Book book){
 };
 
 
+int main (){
+  Book book1("COCO","Dorothee","Didier house",2015,1999,true);
+  Book book2("Navigation","Marcin","tychy publishing",2026,2022,false);
   
+  Library myLibrary;
+  myLibrary.addBook(book1);
+  myLibrary.addBook(book2);
+  myLibrary.displayBooks();
+  myLibrary.searchBook(book1);
+  myLibrary.searchBook(book2);
+ 
+
+
+  
+}  
 
